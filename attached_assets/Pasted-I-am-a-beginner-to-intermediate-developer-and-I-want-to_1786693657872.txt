@@ -1,0 +1,178 @@
+I am a beginner-to-intermediate developer and I want to build a professional freelance marketplace website inspired by the successful UX patterns of platforms such as Fiverr and Upwork, but DO NOT copy their branding, exact UI, copyrighted assets, or layout.
+
+My goal is to create a modern, professional, highly usable marketplace UI that could eventually become a real product.
+
+My current technical stack is:
+
+* HTML
+* CSS
+* JavaScript
+* React
+* Node.js
+* Express
+* PostgreSQL
+* Python for future AI/data features
+* Git and GitHub
+
+For this first phase, focus primarily on the FRONTEND/UI. Do not unnecessarily build a complex backend yet.
+
+PROJECT GOAL:
+Create a polished freelance marketplace called "WorkForge" (use this as a temporary name and structure the code so the branding can easily be changed later).
+
+The platform should support two main user types:
+
+1. Freelancers
+2. Clients
+
+CORE PAGES/UI:
+
+1. Landing/Home page
+2. Browse Jobs
+3. Job Details
+4. Browse Freelancers
+5. Freelancer Profile
+6. Client Profile
+7. Post a Job
+8. Freelancer Dashboard
+9. Client Dashboard
+10. Messages
+11. Login
+12. Sign Up
+13. Settings
+
+HOME PAGE:
+
+* Strong modern hero section
+* Clear headline explaining the marketplace
+* Search bar for jobs/services
+* Categories
+* Popular services
+* Featured freelancers
+* Trending jobs
+* How the platform works
+* Trust/social-proof section
+* Call-to-action sections
+* Professional footer
+
+BROWSE JOBS:
+
+* Search
+* Categories
+* Skills
+* Budget
+* Experience level
+* Job type
+* Remote/project filters
+* Sort options
+* Professional job cards
+* Pagination or load-more interaction
+
+FREELANCER PROFILE:
+
+* Profile photo
+* Name
+* Professional title
+* Bio
+* Skills
+* Experience
+* Portfolio
+* Reviews
+* Rating
+* Completed projects
+* Availability
+* Hourly/project pricing
+* Hire/contact buttons
+
+CLIENT PROFILE:
+
+* Company/client information
+* Posted jobs
+* Reviews
+* Hiring history
+* Verification/trust indicators
+
+DASHBOARDS:
+Create separate dashboard experiences for freelancers and clients.
+
+FREELANCER DASHBOARD:
+
+* Active proposals
+* Saved jobs
+* Active projects
+* Completed projects
+* Earnings overview
+* Profile completion
+* Messages
+* Notifications
+
+CLIENT DASHBOARD:
+
+* Posted jobs
+* Active projects
+* Applicants
+* Hired freelancers
+* Spending overview
+* Messages
+* Notifications
+
+DESIGN DIRECTION:
+
+* Professional SaaS/product aesthetic
+* Clean typography
+* Excellent spacing
+* Strong visual hierarchy
+* Responsive design
+* Desktop-first but fully responsive on tablet/mobile
+* Modern cards
+* Subtle borders and shadows
+* Accessible contrast
+* Smooth but restrained animations
+* Avoid excessive gradients
+* Avoid childish design
+* Avoid generic AI-generated-looking UI
+* Make it look like a serious startup product
+
+IMPORTANT UX PRINCIPLES:
+Study the UX patterns that make Fiverr and Upwork successful:
+
+* Clear discovery
+* Strong search
+* Trust signals
+* Reviews
+* Profiles
+* Categories
+* Pricing transparency
+* Clear calls to action
+* Simple navigation
+* Low friction
+* Strong information hierarchy
+
+However, create ORIGINAL UI, branding and components.
+
+TECHNICAL REQUIREMENTS:
+
+* Use React properly with reusable components.
+* Keep components modular.
+* Use a clean folder structure.
+* Separate pages, components, data, assets and utilities.
+* Use mock data initially.
+* Do NOT hardcode the same UI repeatedly.
+* Make reusable cards, buttons, navigation, filters, modals and form components.
+* Keep the architecture ready for a future Node.js/Express/PostgreSQL backend.
+* Do not add unnecessary libraries unless they provide real value.
+* Use clean, maintainable code.
+* Keep the project easy for a beginner to understand.
+
+FIRST STEP:
+Before writing the entire application, analyze the requirements and create a concise implementation plan and proposed folder structure.
+
+Then build the project in logical stages.
+
+Do not create a huge amount of unnecessary code in one file.
+
+After each major stage, verify that the application runs correctly and fix errors before continuing.
+
+IMPORTANT:
+I am learning while building this project. Therefore, whenever you make a major architectural decision, briefly explain what you changed and why.
+
+Do not ask unnecessary questions. Make sensible professional decisions when requirements are not explicitly specified.

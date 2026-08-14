@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "WorkForge"
+description = "A polished freelance marketplace prototype for discovering work, showcasing talent, and managing client and freelancer workflows with realistic mock data."
+version = "1.0.0"
+id = "artifacts/workforge"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21666
+
+[services.development]
+run = "pnpm --filter @workspace/workforge run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/workforge", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/workforge/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21666"
+BASE_PATH = "/"
