@@ -1,0 +1,661 @@
+You are working on my existing project: **WorkForge**, a frontend-first freelance marketplace inspired by the best UX patterns from platforms like Fiverr and Upwork, but it must remain an ORIGINAL product and visual identity.
+
+IMPORTANT:
+
+* Do NOT rebuild the project from scratch.
+* Do NOT replace the existing WorkForge design with a generic template.
+* Do NOT delete working pages or features.
+* Do NOT introduce unnecessary dependencies.
+* First inspect the existing codebase and understand the current architecture.
+* Preserve the existing WorkForge branding, visual language, routes, components, and working interactions unless a change is specifically required.
+* Make changes incrementally and keep the application working after every major change.
+* This is currently a frontend MVP/prototype. Do NOT implement real payments, real authentication, or production backend infrastructure yet.
+
+## CURRENT PRODUCT
+
+WorkForge is a two-sided freelance marketplace for:
+
+1. Freelancers / independent professionals looking for work.
+2. Clients looking for skilled freelancers.
+
+The existing product already contains:
+
+* Landing page
+* Jobs discovery
+* Job details
+* Freelancer directory
+* Freelancer profiles
+* Freelancer dashboard
+* Client dashboard
+* Messaging UI
+* Post-job flow
+* Login/signup presentation
+* Settings
+* Search
+* Save/unsave jobs
+* Save/unsave freelancers
+* Mock data
+* Responsive navigation
+
+The existing visual identity is important and MUST be preserved:
+
+* Warm editorial/paper-like background
+* Deep navy
+* Teal primary actions
+* Gold secondary accents
+* Coral accent
+* Space Grotesk for display typography
+* DM Sans for body text
+* DM Mono for metadata
+* Subtle paper-grid/noise texture
+* Soft shadows
+* Rounded cards
+* Teal job-card accents
+* Restrained animations
+* Human, thoughtful, trustworthy copy
+* Editorial/product-brand feeling rather than a generic SaaS dashboard
+
+The current project analysis confirms that the biggest problem is not the visual design. The biggest problem is that the project is still a static/local prototype and several interactions are incomplete.
+
+## PHASE 1 GOAL
+
+Turn the current WorkForge prototype into a polished, highly convincing **frontend MVP**.
+
+Do NOT attempt to build the database, real authentication, payments, escrow, or production infrastructure in this task.
+
+Focus on making the existing product feel complete, coherent, professional, responsive, and realistically usable.
+
+---
+
+# TASK 1 — INSPECT BEFORE MODIFYING
+
+First inspect:
+
+* Project structure
+* `App.tsx`
+* Existing routing
+* Existing components
+* Existing mock data
+* Existing styling
+* Existing UI component library
+* Existing package configuration
+* Existing API/server scaffold
+
+Identify what can be reused.
+
+Do not duplicate components unnecessarily.
+
+If something already exists, improve/reuse it rather than creating another version.
+
+---
+
+# TASK 2 — FIX URL-DRIVEN JOB DISCOVERY
+
+The current home page navigates to URLs such as:
+
+`/jobs?q=react`
+
+and:
+
+`/jobs?category=development`
+
+but the Jobs page currently does not properly consume all URL query parameters.
+
+Fix this.
+
+The Jobs page should support URL-driven:
+
+* `q`
+* `category`
+* `skills`
+* `budgetMin`
+* `budgetMax`
+* `experience`
+* `jobType`
+* `location`
+* `availability`
+* `sort`
+* `page`
+
+Example:
+
+`/jobs?q=react&category=development&sort=newest`
+
+Requirements:
+
+* Search field reads from URL.
+* Category filter reads from URL.
+* Filters update the URL.
+* Browser back/forward works correctly.
+* Refresh preserves the search/filter state.
+* Home search and category links actually work.
+* Do not create a complicated state-management system for this.
+
+Use the existing routing approach where possible.
+
+---
+
+# TASK 3 — UPGRADE JOB DISCOVERY
+
+Improve `/jobs` while preserving its current design.
+
+Add/refine:
+
+* Search
+* Category filter
+* Skills filter
+* Budget range
+* Experience level
+* Job type
+* Location/remote
+* Availability
+* Sort
+* Result count
+* Clear filters
+* Saved jobs
+* Empty state
+* Loading-style skeleton if useful
+* Responsive/mobile filter experience
+
+Use the existing mock jobs for now.
+
+Make the filtering actually work against the mock data.
+
+Do not fake functionality with buttons that do nothing.
+
+Fix the existing unreliable "Newest first" sorting problem. Do not sort strings like `"2h ago"` alphabetically. Convert mock timestamps into a reliable sortable representation.
+
+---
+
+# TASK 4 — IMPROVE JOB DETAILS
+
+Improve `/jobs/:id`.
+
+It should show:
+
+* Complete job title
+* Description
+* Skills
+* Budget
+* Job type
+* Experience level
+* Timeline
+* Proposal count
+* Client information
+* Client verification/trust indicators
+* Client hiring history
+* Save job
+* Apply
+* Report job
+
+If an invalid job ID is supplied:
+
+DO NOT display the first job.
+
+Show a proper WorkForge branded not-found state.
+
+The Apply button can remain a frontend prototype interaction for now, but make it feel like a real proposal entry point.
+
+---
+
+# TASK 5 — IMPROVE FREELANCER DISCOVERY
+
+Improve `/freelancers`.
+
+Add/refine:
+
+* Search
+* Skills
+* Availability
+* Rate range
+* Rating
+* Experience
+* Location/timezone
+* Languages
+* Sort
+* Save freelancer
+* Clear filters
+* Result count
+* Empty state
+* Responsive filters
+
+Use existing mock freelancer data.
+
+Every visible control should actually work.
+
+---
+
+# TASK 6 — IMPROVE FREELANCER PROFILE
+
+Improve `/freelancers/:id`.
+
+Keep the existing visual identity but make the profile feel like a serious professional marketplace profile.
+
+Include:
+
+* Profile header
+* About
+* Skills
+* Hourly/fixed rate
+* Availability
+* Response time
+* Completed projects
+* Reviews
+* Rating
+* Work history
+* Portfolio section
+* Languages
+* Verification/trust indicators
+* Save profile
+* Start conversation
+* Invite to job / Hire CTA
+
+The Save Profile action must actually change state.
+
+Do not invent a backend.
+
+Use realistic mock portfolio/project data.
+
+---
+
+# TASK 7 — ADD CLIENT PROFILE
+
+Create a proper client profile route:
+
+`/clients/:id`
+
+It should include:
+
+* Company/client name
+* Description
+* Location
+* Timezone
+* Verification
+* Hiring history
+* Jobs posted
+* Active jobs
+* Completed projects
+* Average rating
+* Reviews from freelancers
+* Typical project budget
+* Response rate
+* Member since
+
+Use mock data.
+
+Make the page visually consistent with freelancer profiles.
+
+---
+
+# TASK 8 — BUILD A REALISTIC FRONTEND PROPOSAL FLOW
+
+The current Apply action only changes button state.
+
+Upgrade it into a frontend proposal experience.
+
+Create a proposal UI containing:
+
+* Cover letter
+* Proposed price
+* Estimated timeline
+* Milestones
+* Relevant portfolio selection
+* Optional attachment area
+* Submit proposal
+* Cancel
+* Validation
+* Success state
+
+Use React Hook Form + Zod if they are already available in the project.
+
+Do NOT connect it to a database.
+
+After submission, show a convincing frontend confirmation and update the local UI state.
+
+---
+
+# TASK 9 — IMPROVE CLIENT HIRING EXPERIENCE
+
+On the client side, create a realistic frontend-only applicant/proposal experience.
+
+A client should be able to conceptually:
+
+Post job
+→ receive proposals
+→ compare freelancers
+→ shortlist
+→ message
+→ hire
+
+Build the UI for:
+
+* Applicant list
+* Proposal cards
+* Freelancer summary
+* Price
+* Timeline
+* Rating
+* Portfolio
+* Shortlist button
+* Reject button
+* Message button
+* Hire button
+
+These can remain local/mock interactions.
+
+---
+
+# TASK 10 — IMPROVE MESSAGING
+
+Keep the existing messaging page but fix incomplete controls.
+
+The following should not appear functional if they do nothing:
+
+* New message
+* Attachment
+* Message options
+* Send
+* Conversation selection
+
+Make the frontend interactions work where reasonably possible.
+
+Do not implement real-time messaging.
+
+---
+
+# TASK 11 — ADD NOTIFICATION CENTER
+
+Create a proper:
+
+`/notifications`
+
+page.
+
+Use mock notification data.
+
+Include notifications for:
+
+* New proposal
+* Proposal accepted
+* New message
+* Job recommendation
+* Shortlisted
+* Project update
+* Deadline reminder
+* Profile view
+
+Support:
+
+* Read/unread state
+* Mark as read
+* Mark all as read
+* Empty state
+
+Keep it consistent with WorkForge.
+
+---
+
+# TASK 12 — FIX SETTINGS
+
+The existing Settings page has tabs that do not fully work.
+
+Make:
+
+* Profile
+* Notifications
+* Security
+* Preferences
+
+actually switch content.
+
+Use frontend state only.
+
+Do not implement real authentication/security.
+
+---
+
+# TASK 13 — FIX POST JOB
+
+Improve `/post-job`.
+
+The form should properly collect and locally validate:
+
+* Job title
+* Description
+* Category
+* Skills
+* Budget
+* Budget type
+* Experience
+* Timeline
+* Job type
+
+Use React Hook Form + Zod if already installed.
+
+On successful submission:
+
+* Show success state.
+* Display the submitted information.
+* Give an option to post another job.
+* Do not pretend that the job has been permanently stored on a server.
+
+---
+
+# TASK 14 — FIX DEAD LINKS
+
+Audit the entire application for links/buttons that appear functional but currently do nothing.
+
+Fix or appropriately handle:
+
+* Home search
+* Category links
+* More filters
+* Save profile
+* New message
+* Message attachment
+* Message options
+* Google auth button
+* Forgot password
+* Settings tabs
+* Dashboard controls
+* Footer links
+* 404 navigation
+
+If a feature is intentionally not implemented yet, make the UI clearly communicate that rather than silently doing nothing.
+
+---
+
+# TASK 15 — CREATE PROPER WORKFORGE 404
+
+Replace the generic developer/scaffold 404.
+
+Create a branded page with a message similar in spirit to:
+
+"This page took an unexpected detour."
+
+Provide useful actions:
+
+* Find work
+* Find talent
+* Go home
+* Open workspace
+
+Do not copy the exact wording from another marketplace.
+
+---
+
+# TASK 16 — LOADING, EMPTY AND ERROR STATES
+
+For every major discovery/data-like page, make sure there is a proper:
+
+* Loading state
+* Empty state
+* Error state
+* Retry/recovery action where appropriate
+* Invalid entity state
+
+Keep these visually consistent with WorkForge.
+
+---
+
+# TASK 17 — RESPONSIVE DESIGN
+
+Test the main experience at:
+
+* Desktop
+* Tablet
+* Mobile
+
+Pay special attention to:
+
+* Navigation
+* Search
+* Filters
+* Job cards
+* Freelancer cards
+* Profiles
+* Proposal forms
+* Dashboards
+* Messaging
+* Tables/lists
+
+Do not destroy the desktop design while fixing mobile.
+
+---
+
+# TASK 18 — ACCESSIBILITY
+
+Improve:
+
+* Keyboard navigation
+* Focus states
+* Icon-only button labels
+* Form labels
+* Form errors
+* Dialog behavior
+* Tabs
+* Mobile controls
+* Contrast
+* Touch targets
+* Reduced-motion support where practical
+
+Use semantic HTML wherever possible.
+
+---
+
+# TASK 19 — CODE QUALITY
+
+The existing `App.tsx` is becoming too large.
+
+Do NOT attempt a dangerous full rewrite.
+
+Instead, gradually extract obvious reusable pieces into sensible folders.
+
+Aim toward:
+
+```text
+src/
+  app/
+  components/
+    branding/
+    layout/
+    marketplace/
+    feedback/
+    forms/
+    ui/
+
+  features/
+    jobs/
+    freelancers/
+    clients/
+    proposals/
+    messaging/
+    notifications/
+    settings/
+
+  pages/
+    home/
+    jobs/
+    freelancers/
+    clients/
+    dashboards/
+    messages/
+    auth/
+    settings/
+    support/
+
+  data/
+    mock/
+
+  hooks/
+  lib/
+  types/
+```
+
+Only move code when it improves maintainability and does not risk breaking the existing app.
+
+---
+
+# IMPORTANT PRODUCT PRINCIPLES
+
+WorkForge should NOT become a cheap Fiverr clone or Upwork clone.
+
+Use Fiverr and Upwork only as inspiration for:
+
+* Marketplace patterns
+* Information architecture
+* Conversion flows
+* Search/filter expectations
+* Trust signals
+* Freelancer/client workflows
+
+WorkForge must retain its own:
+
+* Brand
+* Visual identity
+* Typography
+* Colors
+* Copy style
+* Layout personality
+* Trust philosophy
+
+The product should feel like:
+
+**"A thoughtful, trustworthy modern marketplace for serious independent professionals and clients."**
+
+Not:
+
+**"Another generic freelancing website."**
+
+---
+
+# IMPORTANT TECHNICAL RULES
+
+Before making changes:
+
+1. Inspect the repository.
+2. Understand the existing implementation.
+3. Reuse existing components.
+4. Preserve working functionality.
+5. Make changes incrementally.
+6. Run typechecking/build after major changes.
+7. Fix errors you introduce.
+8. Do not silently remove features.
+9. Do not add unnecessary packages.
+10. Do not implement backend infrastructure in this phase.
+11. Do not implement real payments.
+12. Do not implement real authentication.
+13. Do not expose fake production claims.
+14. Keep mock data clearly separated from future server data.
+
+At the end, provide a concise summary of:
+
+* What you changed
+* What existing functionality you preserved
+* What remains intentionally mock/frontend-only
+* Any errors or limitations you could not resolve
+
+MOST IMPORTANT:
+
+**Do not redesign WorkForge from scratch. Improve the existing product.**
+The current visual identity is an asset and must remain recognizable after your changes.
